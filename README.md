@@ -3,15 +3,7 @@
 Official PyTorch implementation of [Class Specific Semantic Reconstruction for Open Set Recognition](https://ieeexplore.ieee.org/document/9864101).
 
 ---
-## 0. Prepare tinyimagenet dataset
-```
-$ wget http://cs231n.stanford.edu/tiny-imagenet-200.zip
-$ mkdir data
-$ cd data
-$ unzip tiny-imagenet-200.zip
-```
-
-## 1. Train
+## 0. Prepare dataset
 
 Before training, please setup dataset directories in `dataset.py`:
 ```
@@ -21,31 +13,52 @@ LARGE_OOD_PATH = ''     # path for ood datasets, e.g., iNaturalist in imagenet e
 IMAGENET_PATH = ''      # path for imagenet-1k datasets
 ```
 
-To train models from scratch, run command:
+in case of a tinyimagenet 
 ```
-python main.py --gpu 0 --ds {DATASET} --config {MODEL} --save {SAVING_NAME} --method cssr
+$ wget http://cs231n.stanford.edu/tiny-imagenet-200.zip
+$ mkdir data
+$ cd data
+$ unzip tiny-imagenet-200.zip
+```
+
+---
+## 1. Train
+
+- **CSSR**
+  - To train models from scratch, run command:
+```
+python main.py --gpu 0 --ds {DATASET} --config {MODEL} --save {SAVING_NAME} --method cssr --use_neck 
+```
+
+- **CAC**
+  - To train models from scratch, run command:
+```
+python main.py --gpu 0 --ds {DATASET} --config {MODEL} --save {SAVING_NAME} --method cssr --use_neck --transfer_learning
 ```
 
 Command options: 
 - **DATASET:** Experiment configuration file, specifying datasets and random splits, e.g., `./exps/$dataset/spl_$s.json`.
-- **MODEL:** OSR model configuration file, specifying model parameters, e.g., ./configs/$model/$dataset.json. `$model` includes linear/pcssr/rcssr, which corresponds to the baseline and the proposed model.
+- **MODEL:** OSR model configuration file, specifying model parameters, e.g., ./configs/$model/$dataset.json., ./configs/$model/$cac.json. `$model` includes linear/pcssr/rcssr, which corresponds to the baseline and the proposed model.
+- **store true ArgsParser**
+  - `--head_only`: finetunes only the regressor and the classifier(AutoEncoder)
+  - `--use_neck`: Add a neck of PANet between backbone network and classifier(AutoEncoder)
+  - `--transfer_learning`: Only use this feature for transfer learning
 
-Or simply run bash file `sh run.sh` to run all experiments simultaneously.
-
-To train models by finetuning pretrained backbones, like experiments for imagenet-1k, run command:
-```
-python main.py --gpu 0 --ds ./exps/imagenet/vs_inaturalist.json --config ./configs/rcssr/imagenet.json --save imagenet1k_rcssr --method cssr_ft
-```
+---
 
 ## 2. Evaluation
 
-Add `--test` on training commands to restore and evaluate a pretrained model on specified data setup, e.g.,
+- **CSSR**
+  - Add `--test` on training commands to restore and evaluate a pretrained model on specified data setup, e.g.,
 ```
-python main.py --gpu 0 --ds {DATASET} --config {MODEL} --save {SAVING_NAME} --method cssr --test
+python main.py --gpu 0 --ds {DATASET} --config {MODEL} --save {SAVING_NAME} --method cssr --use_neck --test
 ```
 
-With models trained by `sh run.sh`, script `collect_metrics.py` helps collect and present experimental results: `python collect_metrics.py`
-
+- **CAC**
+  - Add `--test` on training commands to restore and evaluate a pretrained model on specified data setup, e.g.,
+```
+python main.py --gpu 0 --ds {DATASET} --config {MODEL} --save {SAVING_NAME} --method cssr --use_neck --test
+```
 
 ## 3. Citation
 ```
