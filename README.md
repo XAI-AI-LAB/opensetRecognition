@@ -1,6 +1,10 @@
-# Class Specific Semantic Reconstruction for Open Set Recognition [TPAMI 2022] 
-
-Official PyTorch implementation of [Class Specific Semantic Reconstruction for Open Set Recognition](https://ieeexplore.ieee.org/document/9864101).
+# Reference Papers and Github
+- **CSSR**
+  - Class Specific Semantic Reconstruction for Open Set Recognition [TPAMI 2022] 
+  - Official PyTorch implementation of [Class Specific Semantic Reconstruction for Open Set Recognition](https://github.com/xyzedd/CSSR).
+- **CAC**
+  - Class Anchor Clustering: a Distance-based Loss for Training Open Set Classifiers
+  - Official PyTorch implementation of [Class Anchor Clustering: a Distance-based Loss for Training Open Set Classifiers](https://github.com/dimitymiller/cac-openset)
 
 ---
 ## 0. Prepare dataset
