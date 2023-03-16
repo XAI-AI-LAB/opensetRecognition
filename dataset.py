@@ -26,9 +26,9 @@ use_droplast = True
 require_org_image = True
 no_test_transform = False
 
-DATA_PATH = '/home/xaiplanet/new_workspace/openset-classifiers/CSSR/data'
+DATA_PATH = '/home/xaiplanet/new_workspace/openset/data'
 TINYIMAGENET_PATH = DATA_PATH + '/tiny-imagenet-200'
-LARGE_OOD_PATH = '/home/xaiplanet/new_workspace/openset-classifiers/CSSR/run/largeoodds'
+LARGE_OOD_PATH = '/home/xaiplanet/new_workspace/openset/run/largeoodds'
 IMAGENET_PATH = '/data/public/imagenet2012'
 
 

@@ -257,6 +257,7 @@ if __name__ == "__main__":
     
     set_up_gpu(args)
     
+    os.makedirs('./save', exist_ok=True)
     datasets = os.path.split(os.path.split(args.ds)[0])[1]
     if not os.path.isdir(f"./save/{datasets}"):
         os.mkdir(f"./save/{datasets}")

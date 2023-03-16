@@ -1,4 +1,3 @@
-import methods.wideresnet as wideresnet
 from methods.augtools import HighlyCustomizableAugment, RandAugmentMC
 import methods.util as util
 import tqdm
