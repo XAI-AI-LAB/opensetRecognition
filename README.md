@@ -2,6 +2,15 @@
 
 Official PyTorch implementation of [Class Specific Semantic Reconstruction for Open Set Recognition](https://ieeexplore.ieee.org/document/9864101).
 
+---
+## 0. Prepare tinyimagenet dataset
+```
+$ wget http://cs231n.stanford.edu/tiny-imagenet-200.zip
+$ mkdir data
+$ cd data
+$ unzip tiny-imagenet-200.zip
+```
+
 ## 1. Train
 
 Before training, please setup dataset directories in `dataset.py`:
