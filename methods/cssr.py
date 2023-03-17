@@ -460,8 +460,9 @@ class CSSRModel(nn.Module):
                 else:
                     clsft_lost.append(None)
             clsft = torch.stack([torch.zeros_like(exm) if x is None else x for x in clsft_lost])
-            clsft /= clsft.sum(dim = 0) #**2
-            # clsft /= clsft.sum(dim = 1,keepdim = True)
+            clsft_add = clsft.sum(dim=0)
+            clsft_add += 1e-7
+            clsft /= clsft_add #**2
             self.avg_feature = clsft.reshape([clsft.shape[0],1,clsft.shape[1],1,1])
             if self.enable_gram:
                 for i in range(len(self.powers)):
@@ -472,12 +473,13 @@ class CSSRModel(nn.Module):
     def get_feature_prototype_deviation(self,feat,ypred):
         # feat = torch.abs(feat)
         avg_feature,_ = self.obtain_usable_feature_prototype()
-        scores = np.zeros([feat.shape[0],feat.shape[2],feat.shape[3]])  # 128 * 32 * 32
+        scores = np.zeros([feat.shape[0],feat.shape[2],feat.shape[3]])  # 128 * 4 * 4
         for pr in range(self.num_classes):
             cond = ypred==pr
             if not cond.any():
                 continue
             scores[cond] = (avg_feature[pr] * feat[cond]).mean(axis = 1).cpu().numpy()
+            # print(np.isnan(avg_feature[pr].cpu().numpy()).any())
 
         return scores
     

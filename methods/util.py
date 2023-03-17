@@ -177,7 +177,7 @@ def visualize(feats, gts, pred, open_pred, config, args, saving_path):
     classes = settings['train'][0]['keep_class']
     # open_classes = ['0', '1', '2', '3', '4', '5', '-1']
     open_classes = settings['test'][0]['keep_class']
-    colors = ['Red', 'BlueViolet', 'LawnGreen', 'HotPink', 'Orange', 'Chartreuse', 'Cyan', 'Khaki', 'Azure', 'BlanchedAlmond',
+    colors = ['Red', 'BlueViolet', 'LawnGreen', 'HotPink', 'Cyan', 'Orange', 'Chartreuse', 'Khaki', 'Azure', 'BlanchedAlmond',
                 'Aquamarine', 'BurlyWood', 'CadetBlue', 'Chocolate', 'Coral', 'CornflowerBlue', 'Cornsilk', 'Crimson', 'DarkCyan',
                 'DarkGoldenRod', 'DarkGrey', 'DarkKhaki', 'DarkOrange', 'DarkOrchid', 'DarkSalmon', 'DarkSeaGreen', 'DarkTurquoise',
                 'DarkViolet', 'DeepPink', 'DeepSkyBlue', 'DodgerBlue', 'FireBrick', 'ForestGreen', 'Fuchsia', 'Gainsboro', 'Gold',
