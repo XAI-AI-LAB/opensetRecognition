@@ -64,13 +64,16 @@ python main.py --gpu 0 --ds {DATASET} --config {MODEL} --save {SAVING_NAME} --me
 python main.py --gpu 0 --ds {DATASET} --config {MODEL} --save {SAVING_NAME} --method cssr --use_neck --test
 ```
 
-## 3. Citation
-```
-@ARTICLE{9864101,
-  author={Huang, Hongzhi and Wang, Yu and Hu, Qinghua and Cheng, Ming-Ming},
-  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
-  title={Class-Specific Semantic Reconstruction for Open Set Recognition},
-  year={2022},
-  doi={10.1109/TPAMI.2022.3200384}
-}
-```
+<br>
+
+---
+## 3. Result feature map
+
+![feature map]('./asset/feature_sample.png')
+
+- **ground truth**
+  - Coloring based on ground truth.
+- **predictions**
+  - Coloring based on model's predictions before openset recognition
+- **openset recognition**
+  - Coloring based on openset recognition
