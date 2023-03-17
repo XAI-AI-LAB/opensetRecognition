@@ -26,10 +26,7 @@ IMAGENET_PATH = ''      # path for imagenet-1k datasets
 
 in case of a tinyimagenet 
 ```
-$ wget http://cs231n.stanford.edu/tiny-imagenet-200.zip
-$ mkdir data
-$ cd data
-$ unzip tiny-imagenet-200.zip
+$ sh tinyimagenet.sh
 ```
 
 ---
