@@ -332,6 +332,7 @@ def  gather_outputs(model, dataloader, output_feature=None, dataloaderFlip = Non
             labels = labels[mask]
 
         if calculate_scores:
+            # distances, _ = torch.min(distances, 1)
             softmin = softmax(-distances)
             invScores = 1-softmin
             scores = distances*invScores
@@ -396,7 +397,7 @@ def  gather_outputs(model, dataloader, output_feature=None, dataloaderFlip = Non
     return X, y, prediction, feature
 
 def auroc(X, y):
-    X = np.min(X, 1)
+    X = np.max(X, 1)
 
     temp = [0 for i in range(len(y))]
     for i in range(len(y)):

@@ -786,7 +786,7 @@ class CSSRMethod:
                 
                 running_loss.update(cacLoss.item())
                 batch_time.update(time.time() - endtime)
-                endtime += time.time()
+                endtime = time.time()
                 
             else:
                 loss,pred,scores = self.model(sx, lb, reqpredauc=True)
