@@ -7,7 +7,14 @@
   - Official PyTorch implementation of [Class Anchor Clustering: a Distance-based Loss for Training Open Set Classifiers](https://github.com/dimitymiller/cac-openset)
 
 ---
-## 0. Prepare dataset
+## 0. Setup environment Prepare dataset 
+
+```
+python version 3.7.11
+
+$ pip install -r requirements.txt
+```
+<br/>
 
 Before training, please setup dataset directories in `dataset.py`:
 ```
@@ -69,7 +76,7 @@ python main.py --gpu 0 --ds {DATASET} --config {MODEL} --save {SAVING_NAME} --me
 ---
 ## 3. Result feature map
 
-![feature map]('./asset/feature_sample.png')
+![feature map](./asset/feature_sample.png)
 
 - **ground truth**
   - Coloring based on ground truth.
